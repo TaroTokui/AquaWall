@@ -1,0 +1,60 @@
+<params>
+	<offset_x>81</offset_x>
+	<offset_y>76</offset_y>
+	<target_width>819</target_width>
+	<target_height>602</target_height>
+<params/>
+	<hibana_num>32</hibana_num>
+	<hibana_size>22</hibana_size>
+	<hibana_speed>16.5</hibana_speed>
+	<kurage_hp>0</kurage_hp>
+	<boss_hp>2</boss_hp>
+<kurage_num>5</kurage_num>
+	<boss_size>388</boss_size>
+<kurage_size>122</kurage_size>
+<settings>
+		<offset_x>125</offset_x>
+		<offset_y>49</offset_y>
+		<target_width>1219</target_width>
+		<target_height>772</target_height>
+		<Boss_status>
+			<size>200</size>
+			<hp>2</hp>
+			<hibana_size>29</hibana_size>
+			<hibana_num>5</hibana_num>
+			<hibana_speed>14.6939</hibana_speed>
+		<grow_speed>0.387755</grow_speed>
+		<change_duration>500</change_duration>
+		</Boss_status>
+	<kurage_hp>1</kurage_hp>
+		<kurage_num>5</kurage_num>
+		<kurage_size>100</kurage_size>
+	<hibana_num>40</hibana_num>
+		<hibana_size>53</hibana_size>
+		<hibana_speed>18.2</hibana_speed>
+	<Enemy_status>
+			<kurage_hp>1</kurage_hp>
+			<kurage_num>5</kurage_num>
+			<kurage_size>100</kurage_size>
+		</Enemy_status>
+	<stage_1>
+			<Enemy_status>
+				<kurage_hp>1</kurage_hp>
+				<kurage_num>5</kurage_num>
+				<kurage_size>100</kurage_size>
+			</Enemy_status>
+		</stage_1>
+	<target_window>118.857, 82.2857, 1204.9, 721.837</target_window>
+	<stage_2>
+			<Boss_status>
+				<size>200</size>
+				<hp>3</hp>
+				<grow_speed>0.895877</grow_speed>
+				<change_duration>500</change_duration>
+				<hibana_size>10</hibana_size>
+				<hibana_num>10</hibana_num>
+				<hibana_speed>5</hibana_speed>
+			</Boss_status>
+		</stage_2>
+	</settings>
+</params>

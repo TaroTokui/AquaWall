@@ -14,6 +14,8 @@
 #include "Stage1.h"
 #include "Stage2.h"
 #include "Title.h"
+#include "GameOver.h"
+#include "Calibration.h"
 
 #define ENABLE_ARDUINO 0
 #define SHOW_WIIMOTE 0
@@ -67,6 +69,8 @@ class testApp : public ofBaseApp{
     Stage1 stage1;
     Stage2 stage2;
     Title game_title;
+    GameOver gameover;
+    Calibration calibration;
     
     // エフェクト
     Hibana hibana;

@@ -29,6 +29,8 @@
 		521D962918DE9AEB0042F3D0 /* Title.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D962718DE9AEB0042F3D0 /* Title.cpp */; };
 		521D962D18DEA38D0042F3D0 /* Stage1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D962B18DEA38D0042F3D0 /* Stage1.cpp */; };
 		521D963018DEB9E60042F3D0 /* Stage2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D962E18DEB9E60042F3D0 /* Stage2.cpp */; };
+		521D963318DFAC2B0042F3D0 /* GameOver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D963118DFAC2B0042F3D0 /* GameOver.cpp */; };
+		521D963618DFAEF80042F3D0 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D963418DFAEF80042F3D0 /* Calibration.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
 		62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63A47AC60FFAFC3BF093EC0F /* OscOutboundPacketStream.cpp */; };
@@ -164,6 +166,10 @@
 		521D962C18DEA38D0042F3D0 /* Stage1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage1.h; sourceTree = "<group>"; };
 		521D962E18DEB9E60042F3D0 /* Stage2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage2.cpp; sourceTree = "<group>"; };
 		521D962F18DEB9E60042F3D0 /* Stage2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage2.h; sourceTree = "<group>"; };
+		521D963118DFAC2B0042F3D0 /* GameOver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOver.cpp; sourceTree = "<group>"; };
+		521D963218DFAC2B0042F3D0 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
+		521D963418DFAEF80042F3D0 /* Calibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Calibration.cpp; sourceTree = "<group>"; };
+		521D963518DFAEF80042F3D0 /* Calibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calibration.h; sourceTree = "<group>"; };
 		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
 		586A8EC141BDFA82B3B0518C /* config.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = config.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/config.h; sourceTree = SOURCE_ROOT; };
 		5928AA323F5C2690B06C837D /* UdpSocketWin.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = UdpSocketWin.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/win32/UdpSocketWin.cpp; sourceTree = SOURCE_ROOT; };
@@ -526,6 +532,10 @@
 				521D962C18DEA38D0042F3D0 /* Stage1.h */,
 				521D962E18DEB9E60042F3D0 /* Stage2.cpp */,
 				521D962F18DEB9E60042F3D0 /* Stage2.h */,
+				521D963118DFAC2B0042F3D0 /* GameOver.cpp */,
+				521D963218DFAC2B0042F3D0 /* GameOver.h */,
+				521D963418DFAEF80042F3D0 /* Calibration.cpp */,
+				521D963518DFAEF80042F3D0 /* Calibration.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -993,7 +1003,9 @@
 				640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */,
 				8F5205AEF8861EF234F0651A /* ofxOscSender.cpp in Sources */,
 				ADE367465D2A8EBAD4C7A8D9 /* IpEndpointName.cpp in Sources */,
+				521D963618DFAEF80042F3D0 /* Calibration.cpp in Sources */,
 				521D962918DE9AEB0042F3D0 /* Title.cpp in Sources */,
+				521D963318DFAC2B0042F3D0 /* GameOver.cpp in Sources */,
 				521D961D18DE73DD0042F3D0 /* Particle.cpp in Sources */,
 				67FE4C7B15C2F0478C8126C2 /* NetworkingUtils.cpp in Sources */,
 				510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */,

@@ -41,10 +41,10 @@
 			<Enemy_status>
 				<kurage_hp>1</kurage_hp>
 				<kurage_num>5</kurage_num>
-				<kurage_size>100</kurage_size>
+				<kurage_size>201</kurage_size>
 			</Enemy_status>
 		</stage_1>
-	<target_window>118.857, 82.2857, 1204.9, 721.837</target_window>
+	<target_window>118.857, 82.2857, 1146.12, 721.837</target_window>
 	<stage_2>
 			<Boss_status>
 				<size>200</size>
@@ -56,5 +56,11 @@
 				<hibana_speed>5</hibana_speed>
 			</Boss_status>
 		</stage_2>
+	<Title>
+			<title_duration>5</title_duration>
+		</Title>
+		<GameOver>
+			<gameover_duration>5</gameover_duration>
+		</GameOver>
 	</settings>
 </params>

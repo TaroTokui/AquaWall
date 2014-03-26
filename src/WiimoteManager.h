@@ -35,6 +35,9 @@ public:
     string getButton(int _ID);
     int getID();
     
+    //--------------------------
+    void setHomography();   // 0~1.0に正規化して渡す
+    
 private:
     ofxOscReceiver receiver;
     float wiiX, wiiY;

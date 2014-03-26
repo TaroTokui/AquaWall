@@ -8,8 +8,8 @@
 
 #pragma once
 
+#include "ofxGui.h"
 #include "SceneBase.h"
-#include "Enemy.h"
 
 class Title:public SceneBase{
 public:
@@ -21,7 +21,15 @@ public:
     
     bool collider(int x, int y);
     bool isEnd();
+    
+	ofParameterGroup parameters;
 private:
-    Enemy button1, button2;
     bool bEnd;
+    ofRectangle mRect;
+    
+    ofImage titleImage;
+    
+    unsigned long long start_time;
+    
+	ofParameter<int> title_duration;
 };

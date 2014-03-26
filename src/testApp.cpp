@@ -22,6 +22,8 @@ void testApp::setup(){
     
     parameters.add(stage1.parameters);
     parameters.add(stage2.parameters);
+    parameters.add(game_title.parameters);
+    parameters.add(gameover.parameters);
     
     gui.setup(parameters);
     
@@ -66,43 +68,17 @@ void testApp::update(){
     ardOutput.update();
 #endif
     
-    switch (scene) {
-        case CONFIG:
-            
-            break;
-            
-        case TITLE:
-            game_title.update();
-            if( game_title.isEnd() )
-            {
-                toggleScene();
-            }
-            break;
-            
-        case STAGE1:
-            stage1.update();
-            if( stage1.isEnd() )
-            {
-                toggleScene();
-            }
-            break;
-            
-        case STAGE2:
-            stage2.update();
-            if( stage2.isEnd() )
-            {
-                toggleScene();
-            }
-            
-            if (stage2.isExplode())
-            {
-                hibana.setup(target_window->x + target_window->z/2, target_window->y + target_window->w/2, hibana_size, stage2.getHibanaAmount(), hibana_speed);
-            }
-            
-            break;
-            
-        default:
-            break;
+    current_scene->update();
+    if( current_scene->isEnd() )
+    {
+        toggleScene();
+    }
+    
+    if (scene == STAGE2) {
+        if (stage2.isExplode())
+        {
+            hibana.setup(target_window->x + target_window->z/2, target_window->y + target_window->w/2, hibana_size, stage2.getHibanaAmount(), hibana_speed);
+        }
     }
     
     hibana.update();
@@ -213,11 +189,11 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 //--------------------------------------------------------------
 void testApp::toggleScene(bool bIncrement){
-    if (scene==STAGE2) {
+    if (scene==GAMEOVER) {
         if (bIncrement) {
             scene = CONFIG;
         }else{
-            scene = STAGE1;
+            scene = TITLE;
         }
     }else{
         scene = static_cast<My_sequence>(scene + 1);
@@ -228,18 +204,24 @@ void testApp::toggleScene(bool bIncrement){
         case CONFIG:
             break;
             
+        case CALIBRATION:
+            current_scene = &calibration;
+            break;
+            
         case TITLE:
             current_scene = &game_title;
             break;
             
         case STAGE1:
-            // 海月生成
             current_scene = &stage1;
             break;
             
         case STAGE2:
-            // boss生成
             current_scene = &stage2;
+            break;
+            
+        case GAMEOVER:
+            current_scene = &gameover;
             break;
             
         default:

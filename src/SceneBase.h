@@ -10,7 +10,7 @@
 
 #include "ofMain.h"
 
-enum My_sequence{ CONFIG, TITLE, STAGE1, STAGE2, GAMEOVER, CALIBRATION };
+enum My_sequence{ CONFIG, CALIBRATION, TITLE, STAGE1, STAGE2, GAMEOVER };
 
 class SceneBase{
 public:

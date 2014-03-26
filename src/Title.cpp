@@ -8,40 +8,41 @@
 
 #include "Title.h"
 
-Title::Title(){}
+Title::Title(){
+    titleImage.loadImage("images/title_image.png");
+	parameters.setName("Title");
+	parameters.add(title_duration.set("title duration",10,0,20));
+}
 
 Title::~Title(){}
 
 void Title::init(ofVec4f targetRect)
 {
-    button1.setupButton(targetRect.x + targetRect.z/3, targetRect.y + targetRect.w/2, 200, KURAGE);
-    button2.setupButton(targetRect.x + targetRect.z*2/3, targetRect.y + targetRect.w/2, 200, VIRUS);
+    mRect.x = targetRect.x;
+    mRect.y = targetRect.y;
+    mRect.width = targetRect.z;
+    mRect.height = targetRect.w;
     bEnd = false;
+    
+    start_time = ofGetElapsedTimeMillis();
 }
 
 void Title::update()
 {
-    button1.update();
-    button2.update();
-    if (button1.isDead() || button2.isDead())
-    {
+    if (ofGetElapsedTimeMillis() - start_time > title_duration * 1000) {
         bEnd = true;
     }
 }
 
 void Title::draw()
 {
-    button1.draw();
-    button2.draw();
+    ofSetColor(255);
+    titleImage.draw(mRect);
 }
 
 bool Title::collider(int x, int y)
 {
-    if( button1.collider(x, y) || button2.collider(x, y) ){
-        return true;
-    }else{
-        return false;
-    }
+    return true;
 }
 
 bool Title::isEnd()

@@ -6,11 +6,11 @@
 //
 //
 
-#ifndef __Laval2014_02__ArduinoManager__
-#define __Laval2014_02__ArduinoManager__
+#pragma once
 
 #include "ofMain.h"
 #include "ofEvents.h"
+#include "ofxGui.h"
 
 #include <iostream>
 
@@ -20,11 +20,9 @@
 #define GUN_OUTPUT_2 11
 
 #define SHOT_3 9
+#define AHIRU 8
 
 #define DEMO_MODE 1
-
-static const int SHOT_DURATION = 150;
-static const int BOSS_DURATION = 100;
 
 static const int NUM_CONTROLLER = 2;
 
@@ -42,9 +40,11 @@ public:
     //--------------------------
     void shot_start(int ID);
     void boss_start();
+    void ahiru_start();
     void setState(bool flag, int ID);
     bool getState(int ID);
     
+    ofParameterGroup parameters;
 private:
     
     void setupArduino(const int & version);
@@ -58,11 +58,13 @@ private:
     string buttonState;
     string potValue;
     
-    unsigned long long shot_start_time[NUM_CONTROLLER], start_time_boss;
-    bool shot_flag[NUM_CONTROLLER], shot_flag3;
+    unsigned long long shot_start_time[NUM_CONTROLLER], start_time_boss, start_time_ahiru;
+    bool shot_flag[NUM_CONTROLLER], shot_flag3, ahiru_flag;
     bool enable[NUM_CONTROLLER], shot_start_flag[NUM_CONTROLLER];
     int pin_out[NUM_CONTROLLER];
     int pin_in[NUM_CONTROLLER];
+    
+	ofParameter<int> shot_duration;
+	ofParameter<int> boss_duration;
+	ofParameter<int> ahiru_duration;
 };
-
-#endif /* defined(__Laval2014_02__ArduinoManager__) */

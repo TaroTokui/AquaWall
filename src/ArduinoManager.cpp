@@ -9,7 +9,14 @@
 #include "ArduinoManager.h"
 
 //--------------------------
-ArduinoManager::ArduinoManager(){}
+ArduinoManager::ArduinoManager()
+{
+	parameters.setName("Arduino");
+	parameters.add(shot_duration.set("shot duration",150,0,1000));
+	parameters.add(boss_duration.set("boss duration",150,0,1000));
+	parameters.add(ahiru_duration.set("ahiru duration",10000,0,20000));
+}
+
 ArduinoManager::~ArduinoManager(){}
 
 void ArduinoManager::setup()
@@ -37,7 +44,7 @@ void ArduinoManager::update()
     {
         if (shot_flag[i])
         {
-            if( ofGetElapsedTimeMillis() - shot_start_time[i] > SHOT_DURATION )
+            if( ofGetElapsedTimeMillis() - shot_start_time[i] > shot_duration )
             {
                 ard.sendDigital(pin_out[i], ARD_LOW);
                 shot_flag[i] = false;
@@ -45,13 +52,23 @@ void ArduinoManager::update()
         }
     }
     
-    // なにか
+    // ボス
     if (shot_flag3)
     {
-        if( ofGetElapsedTimeMillis() - start_time_boss > SHOT_DURATION )
+        if( ofGetElapsedTimeMillis() - start_time_boss > boss_duration )
         {
             ard.sendDigital(SHOT_3, ARD_LOW);
             shot_flag3 = false;
+        }
+    }
+    
+    // アヒル
+    if (ahiru_flag)
+    {
+        if( ofGetElapsedTimeMillis() - start_time_boss > ahiru_duration )
+        {
+            ard.sendDigital(AHIRU, ARD_LOW);
+            ahiru_flag = false;
         }
     }
 }
@@ -65,17 +82,6 @@ void ArduinoManager::shot_start(int ID)
     shot_flag[ID] = true;
     shot_start_flag[ID] = true;
     
-//    if (ID == 0) {
-//        start_time_shot1 = ofGetElapsedTimeMillis();
-//        ard.sendDigital(GUN_OUTPUT_1, ARD_HIGH);
-//        shot_flag1 = true;
-//        shot_start_flag[ID] = true;
-//    }else if(ID==1){
-//        start_time_shot2 = ofGetElapsedTimeMillis();
-//        ard.sendDigital(GUN_OUTPUT_2, ARD_HIGH);
-//        shot_flag2 = true;
-//        shot_start_flag[ID] = true;
-//    }
 }
 
 //--------------------------
@@ -84,6 +90,14 @@ void ArduinoManager::boss_start()
     start_time_boss = ofGetElapsedTimeMillis();
     ard.sendDigital(SHOT_3, ARD_HIGH);
     shot_flag3 = true;
+}
+
+//--------------------------
+void ArduinoManager::ahiru_start()
+{
+    start_time_ahiru = ofGetElapsedTimeMillis();
+    ard.sendDigital(AHIRU, ARD_HIGH);
+    ahiru_flag = true;
 }
 
 void ArduinoManager::setState(bool flag, int ID){

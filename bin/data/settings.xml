@@ -31,7 +31,7 @@
 		<kurage_size>100</kurage_size>
 	<hibana_num>40</hibana_num>
 		<hibana_size>53</hibana_size>
-		<hibana_speed>18.2</hibana_speed>
+		<hibana_speed>32.25</hibana_speed>
 	<Enemy_status>
 			<kurage_hp>1</kurage_hp>
 			<kurage_num>5</kurage_num>
@@ -62,5 +62,8 @@
 		<GameOver>
 			<gameover_duration>5</gameover_duration>
 		</GameOver>
+	<Arduino>
+			<shot_duration>150</shot_duration>
+		</Arduino>
 	</settings>
 </params>

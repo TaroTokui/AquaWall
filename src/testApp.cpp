@@ -18,12 +18,13 @@ void testApp::setup(){
     parameters.add(target_window.set( "target window", ofVec4f(ofGetWidth()/4, ofGetHeight()/4, ofGetWidth()/2, ofGetHeight()/2), ofVec4f(0, 0, 0, 0), ofVec4f(ofGetWidth()/4, ofGetHeight()/2, 1920, 1080) ));
     parameters.add(hibana_num.set( "hibana num", 10, 1, 50 ));
     parameters.add(hibana_size.set( "hibana size", 10, 1, 100 ));
-    parameters.add(hibana_speed.set( "hibana speed", 5.0, 0.0, 20.0 ));
+    parameters.add(hibana_speed.set( "hibana speed", 5.0, 0.0, 50.0 ));
     
     parameters.add(stage1.parameters);
     parameters.add(stage2.parameters);
     parameters.add(game_title.parameters);
     parameters.add(gameover.parameters);
+    parameters.add(ardOutput.parameters);
     
     gui.setup(parameters);
     
@@ -222,6 +223,12 @@ void testApp::toggleScene(bool bIncrement){
             
         case GAMEOVER:
             current_scene = &gameover;
+#if ENABLE_ARDUINO
+            // アヒルが出てくる
+            ardOutput.ahiru_start();
+            // ボスの後ろの空気砲を作動させる
+            ardOutput.boss_start();
+#endif
             break;
             
         default:

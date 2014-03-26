@@ -89,6 +89,7 @@ void wiimoteManager::getXY(float &_x, float &_y){
 
 //--------------------------
 void wiimoteManager::getXY(float &_x, float &_y, const int _ID){
+    // TODO:ここでズレを補正する座標変換を行う
     _x = wiiPos[_ID].x;
     _y = wiiPos[_ID].y;
 }

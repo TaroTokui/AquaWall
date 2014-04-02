@@ -7,8 +7,10 @@
 #include "Hibana.h"
 #include "Hamon.h"
 
-#include "WiimoteManager.h"
+//#include "WiimoteManager.h"
 #include "ArduinoManager.h"
+#include "SoundManager.h"
+#include "UdpReceiver.h"
 
 #include "SceneBase.h"
 #include "Stage1.h"
@@ -20,7 +22,10 @@
 #define ENABLE_ARDUINO 0
 #define SHOW_WIIMOTE 0
 
-static const int NUM_WII = 2;
+#define IN_PORT_1 11999
+#define IN_PORT_2 11998
+
+//static const int NUM_WII = 2;
 
 class testApp : public ofBaseApp{
 
@@ -46,8 +51,10 @@ class testApp : public ofBaseApp{
     bool inTheScreen(int x, int y);
     
     // 入力
-    wiimoteManager wiiInput;
-    ofVec2f wiiPos[NUM_WII];
+//    wiimoteManager wiiInput;
+//    ofVec2f wiiPos[NUM_WII];
+    UdpReceiver cameraInput;
+    ofPoint camPos[NUM_INPUT_CAMERAS];
     
     // 出力(arduino)
     ArduinoManager ardOutput;

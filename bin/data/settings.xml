@@ -58,12 +58,18 @@
 		</stage_2>
 	<Title>
 			<title_duration>5</title_duration>
+		<title_speed>5.10204</title_speed>
 		</Title>
 		<GameOver>
 			<gameover_duration>5</gameover_duration>
 		</GameOver>
 	<Arduino>
 			<shot_duration>150</shot_duration>
+		<boss_duration>150</boss_duration>
+			<ahiru_duration>10000</ahiru_duration>
 		</Arduino>
+	<Calibration>
+			<offset>0, 0</offset>
+		</Calibration>
 	</settings>
 </params>

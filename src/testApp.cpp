@@ -3,11 +3,20 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
-    wiiInput.start();
-    for (int i=0; i<NUM_WII; i++) {
-        wiiPos[i].x = 0;
-        wiiPos[i].y = 0;
+    // カメラからUDPで座標を受け取る
+    // 複数ポートでデータを受け取る
+    cameraInput.setup(IN_PORT_1, IN_PORT_2);
+    cameraInput.start();
+    for (int i=0; i<NUM_INPUT_CAMERAS; i++) {
+        camPos[i].x = 0;
+        camPos[i].y = 0;
     }
+    
+//    wiiInput.start();
+//    for (int i=0; i<NUM_WII; i++) {
+//        wiiPos[i].x = 0;
+//        wiiPos[i].y = 0;
+//    }
     
 #if ENABLE_ARDUINO
     ardOutput.setup();
@@ -20,17 +29,21 @@ void testApp::setup(){
     parameters.add(hibana_size.set( "hibana size", 10, 1, 100 ));
     parameters.add(hibana_speed.set( "hibana speed", 5.0, 0.0, 50.0 ));
     
+    parameters.add(game_title.parameters);
     parameters.add(stage1.parameters);
     parameters.add(stage2.parameters);
-    parameters.add(game_title.parameters);
     parameters.add(gameover.parameters);
     parameters.add(ardOutput.parameters);
+    parameters.add(cameraInput.parameters);
     
     gui.setup(parameters);
     
     gui.loadFromFile("settings.xml");
     
     bShowGui = true;
+    
+    // soundの初期化
+    // TODO:音声の読み込み
     
     scene = TITLE;
     game_title.init(target_window);
@@ -41,26 +54,47 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
+//  wiiの場合をコメントアウト 2014/04/02
+//    // input
+//    for (int i=0; i<NUM_WII; i++) {
+//        wiiInput.getXY(wiiPos[i].x, wiiPos[i].y, i);
+//        
+//        wiiPos[i].y -= 0.2;
+//        
+//        string tmpMessage = wiiInput.getButton(i);
+//        
+//#if ENABLE_ARDUINO
+//        if(inTheScreen(wiiPos[i].x*ofGetWidth(), wiiPos[i].y*ofGetHeight()))
+//        {
+//            ardOutput.setState(true, i);
+////            cout << "ID: "<< i << " on " << wiiPos[i].x << " " << wiiPos[i].y << endl;
+//        }else{
+//            ardOutput.setState(false, i);
+//        }
+//        
+//        // arduinoでonかoffかを受け取る
+//        if (ardOutput.getState(i)) {
+//            collider(wiiPos[i].x*ofGetWidth(), wiiPos[i].y*ofGetHeight());
+//        }
+//#endif
+//    }
+//
+    
     // input
-    for (int i=0; i<NUM_WII; i++) {
-        wiiInput.getXY(wiiPos[i].x, wiiPos[i].y, i);
-        
-        wiiPos[i].y -= 0.2;
-        
-        string tmpMessage = wiiInput.getButton(i);
+    for (int i=0; i<NUM_INPUT_CAMERAS; i++) {
+        cameraInput.getXY(camPos[i], i);
         
 #if ENABLE_ARDUINO
-        if(inTheScreen(wiiPos[i].x*ofGetWidth(), wiiPos[i].y*ofGetHeight()))
+        if(inTheScreen(camPos[i].x, camPos[i].y))
         {
             ardOutput.setState(true, i);
-//            cout << "ID: "<< i << " on " << wiiPos[i].x << " " << wiiPos[i].y << endl;
         }else{
             ardOutput.setState(false, i);
         }
         
         // arduinoでonかoffかを受け取る
         if (ardOutput.getState(i)) {
-            collider(wiiPos[i].x*ofGetWidth(), wiiPos[i].y*ofGetHeight());
+            collider(camPos[i].x, camPos[i].y);
         }
 #endif
     }
@@ -95,7 +129,7 @@ void testApp::draw(){
     
     hibana.draw();
     hamon.draw();
-    
+    cameraInput.draw();
 	if( bShowGui )
     {
         ofNoFill();
@@ -137,12 +171,19 @@ void testApp::keyPressed(int key){
 		hamon.setup(mouseX, mouseY, 10.0);
 	}
     
-	if(key == 's') {
+	if(key == 's' || key == OF_KEY_RETURN) {
+        // ゲームスタート
+        game_title.end();
+	}
+    
+	if(key == 'S') {
 		gui.saveToFile("settings.xml");
 	}
-	if(key == 'l') {
+    
+	if(key == 'L') {
 		gui.loadFromFile("settings.xml");
 	}
+    
 	if(key == 't') {
 		toggleScene(true);
 	}
@@ -252,10 +293,12 @@ bool testApp::collider(int x, int y){
         if( current_scene->collider(x, y) ){
             hibana.setup(x, y, hibana_size, hibana_num, hibana_speed);
             isHit = true;
+            // 火花の効果音を鳴らす
         }
         
         if (!isHit) {
             hamon.setup(x, y, 10.0);
+            // 波紋の効果音を鳴らす
         }
         
         return true;

@@ -20,6 +20,7 @@ public:
     void update();
     void draw();
     
+	ofParameterGroup parameters;
 private:
     vector<Ring> rings;
     vector<Ring>::iterator it;
@@ -28,4 +29,8 @@ private:
     
     ofShader shader;
     ofPlanePrimitive plane;
+    
+    // GUI
+	ofParameter<int> size, max_hp, hibana_num, change_duration;
+    ofParameter<float> hamon_speed;
 };

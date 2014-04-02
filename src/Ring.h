@@ -16,6 +16,7 @@ public:
     Ring();
     ~Ring();
     void setup(int x, int y, float speed);
+    void setup(int x, int y, float speed, float _alpha);
     void update();
     void draw();
     

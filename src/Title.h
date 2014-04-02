@@ -11,6 +11,8 @@
 #include "ofxGui.h"
 #include "SceneBase.h"
 
+static const string TITLE_IMAGE = "images/01_title.png";
+
 class Title:public SceneBase{
 public:
     Title();
@@ -21,15 +23,18 @@ public:
     
     bool collider(int x, int y);
     bool isEnd();
+    void end();
     
 	ofParameterGroup parameters;
 private:
     bool bEnd;
     ofRectangle mRect;
     
-    ofImage titleImage;
+    ofImage titleImage, ahiruImage;
+    float image_offset;
     
     unsigned long long start_time;
     
-	ofParameter<int> title_duration;
+//	ofParameter<int> title_duration;
+	ofParameter<float> title_speed;
 };

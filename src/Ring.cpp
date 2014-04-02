@@ -13,6 +13,11 @@ Ring::~Ring(){}
 
 void Ring::setup(int x, int y, float speed)
 {
+    setup(x, y, speed, 4);
+}
+
+void Ring::setup(int x, int y, float speed, float _alpha)
+{
     mX = x;
     mY = y;
     mVX = speed;

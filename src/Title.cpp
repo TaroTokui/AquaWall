@@ -9,10 +9,13 @@
 #include "Title.h"
 
 Title::Title():image_offset(0){
-    titleImage.loadImage("images/01_title.png");
+    titleImage.loadImage(TITLE_IMAGE_TEXT);
+    // ここであひる画像の読み込み
 	parameters.setName("Title");
-//	parameters.add(title_duration.set("title duration",10,0,20));
 	parameters.add(title_speed.set("title speed",0.0,0.0,20.0));
+	parameters.add(title_hue.set("title hue",0,0,255));
+	parameters.add(title_sat.set("title sat",255,0,255));
+    mColor.set(255);
 }
 
 Title::~Title(){}
@@ -45,12 +48,13 @@ void Title::update()
         image_offset = ofGetWidth();
     }
 #endif
+    mColor.setHsb(title_hue, title_sat, 255);
 }
 
 void Title::draw()
 {
     ofRectangle tmpRect = mRect;
-    ofSetColor(255);
+    ofSetColor(mColor);
     
     // 一枚目の画像
     tmpRect.x += image_offset;

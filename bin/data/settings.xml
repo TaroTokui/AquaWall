@@ -59,6 +59,8 @@
 	<Title>
 			<title_duration>5</title_duration>
 		<title_speed>5.10204</title_speed>
+		<title_hue>210</title_hue>
+			<title_sat>226</title_sat>
 		</Title>
 		<GameOver>
 			<gameover_duration>5</gameover_duration>

@@ -11,7 +11,8 @@
 #include "ofxGui.h"
 #include "SceneBase.h"
 
-static const string TITLE_IMAGE = "images/01_title.png";
+static const string TITLE_IMAGE_TEXT = "images/01_title_text.png";
+static const string TITLE_IMAGE_DUCK = "images/01_title_duck.png";
 
 class Title:public SceneBase{
 public:
@@ -35,6 +36,8 @@ private:
     
     unsigned long long start_time;
     
-//	ofParameter<int> title_duration;
+	ofParameter<int> title_hue, title_sat;
 	ofParameter<float> title_speed;
+    
+    ofColor mColor;
 };

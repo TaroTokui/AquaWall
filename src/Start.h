@@ -34,6 +34,8 @@ public:
     bool isEnd();
     bool enableAhiru();
     void startAhiru();
+    bool enableHelp();
+    void startHelp();
     
 	ofParameterGroup parameters;
 private:
@@ -48,7 +50,7 @@ private:
 	ofParameter<int> text_hue;
     
     start_sequence sq;
-    bool bAhiru;
+    bool bAhiru, bHelp;
     
     ofColor mColor;
 };

@@ -10,6 +10,8 @@
 
 #include "ofMain.h"
 
+static const int NUM_SOUNDS = 4;    // 使用する音声の数
+
 class SoundManager{
 public:
     SoundManager();
@@ -24,7 +26,7 @@ public:
     void add(string path, int index);
     
 private:
-    ofSoundPlayer sounds[2];
+    ofSoundPlayer sounds[NUM_SOUNDS];
     
     bool isCounting;
     

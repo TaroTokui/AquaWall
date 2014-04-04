@@ -32,6 +32,7 @@ void CStart::init(ofVec4f targetRect)
     mRect.height = targetRect.w;
     bEnd = false;
     bAhiru = false;
+    bHelp = false;
     
     start_time = ofGetElapsedTimeMillis();
     sq = START_START;
@@ -55,6 +56,7 @@ void CStart::update()
             {
                 sq = START_AHIRU_MESSAGE;
                 start_time = ofGetElapsedTimeMillis();
+                bHelp = true;
             }
             break;
             
@@ -120,4 +122,12 @@ bool CStart::enableAhiru(){
 
 void CStart::startAhiru(){
     bAhiru = false;
+}
+
+bool CStart::enableHelp(){
+    return bHelp;
+}
+
+void CStart::startHelp(){
+    bHelp = false;
 }

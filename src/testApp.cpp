@@ -85,6 +85,15 @@ void testApp::update(){
             ardOutput.ahiru_start();
 #endif
             game_start.startAhiru();
+            cout << "ahiru is here" << endl;
+        }
+        
+        // 音声再生
+        if (game_start.enableHelp())
+        {
+            sounds.play(2); // たすけてー
+            game_start.startHelp();
+            cout << "help" << endl;
         }
     }
     

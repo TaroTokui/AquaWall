@@ -15,6 +15,8 @@ SoundManager::~SoundManager(){}
 void SoundManager::setup(){
 	sounds[0].loadSound("sounds/collision.mp3");
 	sounds[1].loadSound("sounds/shot.mp3");
+	sounds[2].loadSound("sounds/help.mp3");
+	sounds[3].loadSound("sounds/thanks.mp3");
     
     // 効果音は有限個しか読み込まないのでvector型では管理しない。2014/04/05
     // vectorに突っ込むと全部最後の音になってしまうので、結局ただの配列にした
@@ -24,7 +26,6 @@ void SoundManager::setup(){
 //    tmpSound.loadSound("sounds/shot.mp3");
 //    sounds.push_back(tmpSound);
  
-//    cout << sounds.size() << endl;
 }
 
 void SoundManager::update(){
@@ -33,7 +34,10 @@ void SoundManager::update(){
 }
 
 void SoundManager::play(int index){
-    sounds[index].play();
+    if (index<NUM_SOUNDS)
+    {
+        sounds[index].play();
+    }
 //    if (index < sounds.size())
 //    {
 //        sounds[0].play();

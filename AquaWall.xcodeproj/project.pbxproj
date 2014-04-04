@@ -37,6 +37,7 @@
 		521D966918E576EE0042F3D0 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D966218E576CA0042F3D0 /* ofxTCPManager.cpp */; };
 		521D966A18E576EE0042F3D0 /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D966418E576CA0042F3D0 /* ofxTCPServer.cpp */; };
 		521D966B18E576EE0042F3D0 /* ofxUDPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D966618E576CA0042F3D0 /* ofxUDPManager.cpp */; };
+		521D967018EC61020042F3D0 /* Start.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 521D966E18EC61020042F3D0 /* Start.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
 		62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63A47AC60FFAFC3BF093EC0F /* OscOutboundPacketStream.cpp */; };
@@ -191,6 +192,8 @@
 		521D966518E576CA0042F3D0 /* ofxTCPServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxTCPServer.h; sourceTree = "<group>"; };
 		521D966618E576CA0042F3D0 /* ofxUDPManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxUDPManager.cpp; sourceTree = "<group>"; };
 		521D966718E576CA0042F3D0 /* ofxUDPManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxUDPManager.h; sourceTree = "<group>"; };
+		521D966E18EC61020042F3D0 /* Start.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Start.cpp; sourceTree = "<group>"; };
+		521D966F18EC61020042F3D0 /* Start.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Start.h; sourceTree = "<group>"; };
 		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
 		586A8EC141BDFA82B3B0518C /* config.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = config.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/config.h; sourceTree = SOURCE_ROOT; };
 		5928AA323F5C2690B06C837D /* UdpSocketWin.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = UdpSocketWin.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/win32/UdpSocketWin.cpp; sourceTree = SOURCE_ROOT; };
@@ -553,6 +556,8 @@
 				521D962518DE99CA0042F3D0 /* SceneBase.h */,
 				521D962718DE9AEB0042F3D0 /* Title.cpp */,
 				521D962818DE9AEB0042F3D0 /* Title.h */,
+				521D966E18EC61020042F3D0 /* Start.cpp */,
+				521D966F18EC61020042F3D0 /* Start.h */,
 				521D962B18DEA38D0042F3D0 /* Stage1.cpp */,
 				521D962C18DEA38D0042F3D0 /* Stage1.h */,
 				521D962E18DEB9E60042F3D0 /* Stage2.cpp */,
@@ -1056,6 +1061,7 @@
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,
+				521D967018EC61020042F3D0 /* Start.cpp in Sources */,
 				E212C821D1064B92DD953A42 /* ofxCvHaarFinder.cpp in Sources */,
 				63020F16C7E8DED980111241 /* ofxCvImage.cpp in Sources */,
 				521D961718DE73DD0042F3D0 /* ArduinoManager.cpp in Sources */,

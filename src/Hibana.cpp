@@ -10,20 +10,27 @@
 
 Hibana::Hibana(){
     mImage.loadImage("images/star.png");
+    
+    parameters.setName("Hibana");
+    parameters.add(hibana_num.set( "hibana num", 10, 1, 50 ));
+    parameters.add(hibana_size.set( "hibana size", 10, 1, 100 ));
+    parameters.add(hibana_speed.set( "hibana speed", 5.0, 0.0, 50.0 ));
 }
 
 Hibana::~Hibana(){
 }
 
-void Hibana::setup(int x, int y, int size, int n, float speed){
+void Hibana::add(int x, int y){
+    add(x, y, hibana_num);
+}
+
+void Hibana::add(int x, int y, int n){
     
     Particle newParticle;
     for (int i=0; i<n; i++) {
-        newParticle.setup(x, y, speed);
+        newParticle.setup(x, y, hibana_speed);
         particles.push_back(newParticle);
     }
-    
-    mSize = size;
     
 }
 
@@ -46,7 +53,7 @@ void Hibana::draw(){
     while (itp != particles.end()) {
 //        itp->draw();
         ofSetColor(itp->getColor());
-        mImage.draw(itp->getPosition(), mSize, mSize);
+        mImage.draw(itp->getPosition(), hibana_size, hibana_size);
         itp++;
     }
 }

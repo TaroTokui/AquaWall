@@ -9,7 +9,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGui.h"
 #include "Enemy.h"
 
 class Boss: public Enemy{

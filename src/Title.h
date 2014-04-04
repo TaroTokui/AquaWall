@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include "ofxGui.h"
 #include "SceneBase.h"
 
 static const string TITLE_IMAGE_TEXT = "images/01_title_text.png";

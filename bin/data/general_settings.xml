@@ -1,0 +1,20 @@
+<general_settings>
+	<target_window>256, 135.184, 979.592, 655.714</target_window>
+	<hibana_num>20</hibana_num>
+	<hibana_size>49</hibana_size>
+	<hibana_speed>27.75</hibana_speed>
+	<Arduino>
+		<shot_duration>150</shot_duration>
+		<boss_duration>150</boss_duration>
+		<ahiru_duration>10000</ahiru_duration>
+	</Arduino>
+	<Calibration>
+		<offset>0, 0</offset>
+	</Calibration>
+<general_settings/>
+<Hibana>
+		<hibana_num>21</hibana_num>
+		<hibana_size>48</hibana_size>
+		<hibana_speed>32.1429</hibana_speed>
+	</Hibana>
+</general_settings>

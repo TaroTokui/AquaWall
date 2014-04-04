@@ -23,22 +23,26 @@ void testApp::setup(){
 #endif
     
     // gui
-	parameters.setName("settings");
-    parameters.add(target_window.set( "target window", ofVec4f(ofGetWidth()/4, ofGetHeight()/4, ofGetWidth()/2, ofGetHeight()/2), ofVec4f(0, 0, 0, 0), ofVec4f(ofGetWidth()/4, ofGetHeight()/2, 1920, 1080) ));
-    parameters.add(hibana_num.set( "hibana num", 10, 1, 50 ));
-    parameters.add(hibana_size.set( "hibana size", 10, 1, 100 ));
-    parameters.add(hibana_speed.set( "hibana speed", 5.0, 0.0, 50.0 ));
+	general_params.setName("general settings");
+    general_params.add(target_window.set( "target window", ofVec4f(ofGetWidth()/4, ofGetHeight()/4, ofGetWidth()/2, ofGetHeight()/2), ofVec4f(0, 0, 0, 0), ofVec4f(ofGetWidth()/4, ofGetHeight()/2, 1920, 1080) ));
     
-    parameters.add(game_title.parameters);
-    parameters.add(stage1.parameters);
-    parameters.add(stage2.parameters);
-    parameters.add(gameover.parameters);
-    parameters.add(ardOutput.parameters);
-    parameters.add(cameraInput.parameters);
+    general_params.add(hibana.parameters);
+    general_params.add(ardOutput.parameters);
+    general_params.add(cameraInput.parameters);
     
-    gui.setup(parameters);
+    gui_general.setup(general_params);
+    gui_general.loadFromFile("general_settings.xml");
+    gui_general.setPosition(ofGetWidth()-300, 0);
     
-    gui.loadFromFile("settings.xml");
+	stage_params.setName("stage settings");
+    stage_params.add(game_title.parameters);
+    stage_params.add(game_start.parameters);
+    stage_params.add(stage1.parameters);
+    stage_params.add(stage2.parameters);
+    stage_params.add(gameover.parameters);
+    
+    gui_stage.setup(stage_params);
+    gui_stage.loadFromFile("stage_settings.xml");
     
     bShowGui = true;
     
@@ -99,22 +103,32 @@ void testApp::update(){
 #endif
     }
     
-#if ENABLE_ARDUINO
-    ardOutput.update();
-#endif
-    
     current_scene->update();
     if( current_scene->isEnd() )
     {
         toggleScene();
     }
     
+    if (scene == START) {
+        if (game_start.enableAhiru())
+        {
+#if ENABLE_ARDUINO
+            ardOutput.ahiru_start();
+#endif
+            game_start.startAhiru();
+        }
+    }
+    
     if (scene == STAGE2) {
         if (stage2.isExplode())
         {
-            hibana.setup(target_window->x + target_window->z/2, target_window->y + target_window->w/2, hibana_size, stage2.getHibanaAmount(), hibana_speed);
+            hibana.add(target_window->x + target_window->z/2, target_window->y + target_window->w/2, stage2.getHibanaAmount());
         }
     }
+    
+#if ENABLE_ARDUINO
+    ardOutput.update();
+#endif
     
     hibana.update();
     hamon.update();
@@ -136,7 +150,8 @@ void testApp::draw(){
         ofSetColor(255);
         ofRect(target_window->x, target_window->y, target_window->z, target_window->w);
         
-		gui.draw();
+		gui_general.draw();
+		gui_stage.draw();
 	}
     
 #if SHOW_WIIMOTE
@@ -177,11 +192,13 @@ void testApp::keyPressed(int key){
 	}
     
 	if(key == 'S') {
-		gui.saveToFile("settings.xml");
+		gui_general.saveToFile("general_settings.xml");
+		gui_stage.saveToFile("stage_settings.xml");
 	}
     
 	if(key == 'L') {
-		gui.loadFromFile("settings.xml");
+		gui_general.loadFromFile("general_settings.xml");
+		gui_stage.loadFromFile("stage_settings.xml");
 	}
     
 	if(key == 't') {
@@ -254,6 +271,10 @@ void testApp::toggleScene(bool bIncrement){
             current_scene = &game_title;
             break;
             
+        case START:
+            current_scene = &game_start;
+            break;
+            
         case STAGE1:
             current_scene = &stage1;
             break;
@@ -291,7 +312,7 @@ bool testApp::collider(int x, int y){
     {
         // 当たり判定
         if( current_scene->collider(x, y) ){
-            hibana.setup(x, y, hibana_size, hibana_num, hibana_speed);
+            hibana.add(x, y);
             isHit = true;
             // 火花の効果音を鳴らす
         }

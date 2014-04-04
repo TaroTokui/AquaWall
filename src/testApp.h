@@ -16,6 +16,7 @@
 #include "Stage1.h"
 #include "Stage2.h"
 #include "Title.h"
+#include "Start.h"
 #include "GameOver.h"
 #include "Calibration.h"
 
@@ -60,13 +61,13 @@ class testApp : public ofBaseApp{
     ArduinoManager ardOutput;
     
     // GUI
-	ofxPanel gui;
+	ofxPanel gui_general, gui_stage;
 	ofParameter<ofVec4f> target_window;
 	ofParameter<int> hibana_num;
 	ofParameter<int> hibana_size;
 	ofParameter<float> hibana_speed;
     
-    ofParameterGroup parameters;
+    ofParameterGroup general_params, stage_params;
     
     bool bShowGui;
     
@@ -76,6 +77,7 @@ class testApp : public ofBaseApp{
     Stage1 stage1;
     Stage2 stage2;
     Title game_title;
+    CStart game_start;
     GameOver gameover;
     Calibration calibration;
     

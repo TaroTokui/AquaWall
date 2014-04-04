@@ -1,0 +1,34 @@
+<stage_settings>
+	<Title>
+		<title_speed>3.57143</title_speed>
+		<title_hue>228</title_hue>
+		<title_sat>255</title_sat>
+	</Title>
+	<Start>
+		<start_duration>3</start_duration>
+		<ahiru_duration>1.02041</ahiru_duration>
+		<virus_duration>4</virus_duration>
+		<end_duration>3</end_duration>
+	<text_hue>222</text_hue>
+	</Start>
+	<stage_1>
+		<Enemy_status>
+			<kurage_hp>1</kurage_hp>
+			<kurage_num>5</kurage_num>
+			<kurage_size>206</kurage_size>
+		</Enemy_status>
+	</stage_1>
+	<stage_2>
+		<Boss_status>
+			<size>200</size>
+			<hp>3</hp>
+			<grow_speed>0.364848</grow_speed>
+			<change_duration>500</change_duration>
+			<hibana_num>5</hibana_num>
+		</Boss_status>
+	</stage_2>
+	<GameOver>
+		<gameover_duration>10</gameover_duration>
+	</GameOver>
+<stage_settings/>
+</stage_settings>

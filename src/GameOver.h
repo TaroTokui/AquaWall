@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include "ofxGui.h"
 #include "SceneBase.h"
 
 class GameOver:public SceneBase{

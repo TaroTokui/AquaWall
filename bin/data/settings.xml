@@ -73,5 +73,11 @@
 	<Calibration>
 			<offset>0, 0</offset>
 		</Calibration>
+	<Start>
+			<start_duration>3</start_duration>
+			<ahiru_duration>1.02041</ahiru_duration>
+			<virus_duration>4</virus_duration>
+			<end_duration>3</end_duration>
+		</Start>
 	</settings>
 </params>

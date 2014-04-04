@@ -16,12 +16,17 @@ class Hibana{
 public:
     Hibana();
     ~Hibana();
-    void setup(int x, int y, int size, int n, float speed = 5.0);
+    void add(int x, int y);
+    void add(int x, int y, int n);
     void update();
     void draw();
     
+	ofParameterGroup parameters;
 private:
     vector<Particle> particles;
     ofImage mImage;
-    int mSize;
+    
+	ofParameter<int> hibana_num;
+	ofParameter<int> hibana_size;
+	ofParameter<float> hibana_speed;
 };

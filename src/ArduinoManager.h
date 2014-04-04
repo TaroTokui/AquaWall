@@ -10,7 +10,6 @@
 
 #include "ofMain.h"
 #include "ofEvents.h"
-#include "ofxGui.h"
 
 #include <iostream>
 

@@ -46,7 +46,6 @@ void Ring::update()
     mHeight += mVY;
     
     alpha -= alpha_speed;
-    cout << alpha << endl;
     mC.a = alpha;
     
     scale += mSpeed;

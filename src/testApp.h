@@ -81,4 +81,6 @@ class testApp : public ofBaseApp{
     Hibana hibana;
     Hamon hamon;
     
+    // 効果音
+    SoundManager sounds;
 };

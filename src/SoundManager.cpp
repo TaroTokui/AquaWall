@@ -13,16 +13,18 @@ SoundManager::SoundManager(){}
 SoundManager::~SoundManager(){}
 
 void SoundManager::setup(){
-//	sounds[0].loadSound("sounds/akira/1.mp3");
-//	sounds[1].loadSound("sounds/akira/2.mp3");
-//	sounds[2].loadSound("sounds/akira/3.mp3");
-//	sounds[3].loadSound("sounds/akira/kotti.mp3");
-//	sounds[4].loadSound("sounds/akira/satueishimasu.mp3");
-//	sounds[5].loadSound("sounds/akira/kotti.mp3");
-//    
-//    cout << "souds are loaded" << endl;
-//    
-//	sounds[0].setVolume(0.75f);
+	sounds[0].loadSound("sounds/collision.mp3");
+	sounds[1].loadSound("sounds/shot.mp3");
+    
+    // 効果音は有限個しか読み込まないのでvector型では管理しない。2014/04/05
+    // vectorに突っ込むと全部最後の音になってしまうので、結局ただの配列にした
+//    ofSoundPlayer tmpSound;
+//    tmpSound.loadSound("sounds/collision.mp3");
+//    sounds.push_back(tmpSound);
+//    tmpSound.loadSound("sounds/shot.mp3");
+//    sounds.push_back(tmpSound);
+ 
+//    cout << sounds.size() << endl;
 }
 
 void SoundManager::update(){
@@ -31,8 +33,13 @@ void SoundManager::update(){
 }
 
 void SoundManager::play(int index){
-//    sounds[index].play();
-    cout << "played" << endl;
+    sounds[index].play();
+//    if (index < sounds.size())
+//    {
+//        sounds[0].play();
+//    }
+    
+//    cout << "played" << endl;
 }
 
 void SoundManager::stop(){}

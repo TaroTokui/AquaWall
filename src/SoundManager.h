@@ -24,9 +24,9 @@ public:
     void add(string path, int index);
     
 private:
-//    ofSoundPlayer sounds[6];
+    ofSoundPlayer sounds[2];
     
     bool isCounting;
     
-    vector<ofSoundPlayer> sounds;
+//    vector<ofSoundPlayer> sounds;
 };

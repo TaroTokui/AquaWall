@@ -42,7 +42,7 @@ void testApp::setup(){
     bShowGui = true;
     
     // soundの初期化
-    // TODO:音声の読み込み
+    sounds.setup();
     
     scene = TITLE;
     game_title.init(target_window);
@@ -99,8 +99,12 @@ void testApp::update(){
     ardOutput.update();
 #endif
     
+    // エフェクトの更新
     hibana.update();
     hamon.update();
+    
+    // 効果音の更新
+    sounds.update();
     
 }
 
@@ -284,11 +288,13 @@ bool testApp::collider(int x, int y){
             hibana.add(x, y);
             isHit = true;
             // 火花の効果音を鳴らす
+            sounds.play(0);
         }
         
         if (!isHit) {
             hamon.setup(x, y, 10.0);
             // 波紋の効果音を鳴らす
+            sounds.play(1);
         }
         
         return true;

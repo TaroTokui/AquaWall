@@ -18,6 +18,7 @@ public:
     Enemy();
     ~Enemy();
     void setup(ofRectangle area, int hp = 0, int size = 100, float speed=5.0);
+    void setup(ofRectangle area, int hp = 0, int size = 100, float speed=5.0, int hue=-1);
     void setupButton(int x, int y, int size, Enemy_type _type = VIRUS);
     void update();
     void draw();

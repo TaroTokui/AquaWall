@@ -15,7 +15,9 @@ EnemyGroup::EnemyGroup(){
     parameters.add(kurage_hp.set( "kurage hp", 5, 0, 10 ));
     parameters.add(kurage_num.set( "kurage num", 5, 0, 20 ));
     parameters.add(kurage_size.set( "kurage size", 100, 10, 500 ));
-    
+    parameters.add(kurage_speed.set( "kurage speed", 5, 0, 10 ));
+    parameters.add(kurage_color.set( "kurage color", -1, -1, 255 ));
+
     shader.load("shaders/sprite");
     
     plane.set(mImage.getWidth(), mImage.getHeight(), 2, 2, OF_PRIMITIVE_TRIANGLES);
@@ -41,7 +43,6 @@ void EnemyGroup::update(){
             ite++;
         }
     }
-    
 }
 
 void EnemyGroup::draw()
@@ -87,7 +88,7 @@ void EnemyGroup::add(int x, int y, int w, int h){
     plane.setHeight(kurage_size);
     for (int i=0; i<kurage_num; i++) {
         Enemy newEnemy;
-        newEnemy.setup(ofRectangle(x, y, w, h), kurage_hp, kurage_size);
+        newEnemy.setup(ofRectangle(x, y, w, h), kurage_hp, kurage_size, kurage_speed, kurage_color);
         kurage.push_back(newEnemy);
     }
 }

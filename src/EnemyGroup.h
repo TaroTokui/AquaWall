@@ -37,6 +37,8 @@ private:
 	ofParameter<int> kurage_hp;
 	ofParameter<int> kurage_num;
 	ofParameter<int> kurage_size;
+	ofParameter<float> kurage_speed;
+	ofParameter<int> kurage_color;
     
     ofShader shader;
     ofPlanePrimitive plane;

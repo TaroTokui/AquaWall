@@ -16,6 +16,11 @@ Enemy::~Enemy(){}
 
 void Enemy::setup(ofRectangle area, int _hp, int size, float speed)
 {
+    setup(area, _hp, size, speed, -1);
+}
+
+void Enemy::setup(ofRectangle area, int _hp, int size, float speed, int hue)
+{
     mX = ofRandom(area.width)+area.x;
     mY = ofRandom(area.height)+area.y;
     mVX = ofRandom(speed)-speed/2.0;
@@ -30,7 +35,11 @@ void Enemy::setup(ofRectangle area, int _hp, int size, float speed)
     scale = 0.0;
     mArea = area;
     mType = KURAGE;
-    mColor.setHsb(0, 255, 255);
+    if (hue<0) {
+        mColor.setHsb(ofRandom(255), 255, 255);
+    }else{
+        mColor.setHsb(hue, 255, 255);
+    }
 }
 
 void Enemy::setupButton(int x, int y, int size, Enemy_type _type)

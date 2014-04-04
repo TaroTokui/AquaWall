@@ -39,10 +39,16 @@ public:
     
     ofParameterGroup parameters;
 private:
+    void drawCross(ofPoint pos);
     
     ofxUDPManager udpConnection1, udpConnection2;
     
     ofPoint mPos[NUM_INPUT_CAMERAS];
     
 	ofParameter<ofVec2f> offset, window_size;
+    
+	ofParameter<int> cursor_size;
+	ofParameter<float> cursor_width;
+	ofParameter<bool> show_cursor;
+    
 };

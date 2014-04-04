@@ -13,7 +13,11 @@ UdpReceiver::UdpReceiver()
 {
 	parameters.setName("Calibration");
 	parameters.add(offset.set("offset",ofVec2f(0, 0),ofVec2f(-500, -500),ofVec2f(500, 500)));
+	parameters.add(window_size.set("window_size",ofVec2f(1920, 1080),ofVec2f(0, 0),ofVec2f(1920, 1080)));
     
+	parameters.add(cursor_size.set("cursor size",20,0,200));
+	parameters.add(cursor_width.set("cursor width",2,0,10));
+	parameters.add(show_cursor.set("show cursor",true));
 }
 UdpReceiver::~UdpReceiver(){
     udpConnection1.Close();
@@ -32,9 +36,27 @@ void UdpReceiver::setup(int PORT1, int PORT2)
 }
 
 void UdpReceiver::draw(){
-    for (int i=0; i<NUM_INPUT_CAMERAS; i++) {
-        ofEllipse(mPos[i].x * ofGetWidth(), mPos[i].y * ofGetHeight(), 10, 10);
+    if (show_cursor) {
+        for (int i=0; i<NUM_INPUT_CAMERAS; i++) {
+            ofEllipse(mPos[i].x * ofGetWidth(), mPos[i].y * ofGetHeight(), 10, 10);
+            drawCross(mPos[i]);
+        }
     }
+}
+
+void UdpReceiver::drawCross(ofPoint pos){
+    ofSetColor(255);
+    ofSetLineWidth(cursor_width);
+    
+    ofCircle(0, 0, 20);
+    
+    int x = pos.x*ofGetWidth();
+    int y = pos.y*ofGetHeight();
+//    ofLine(x-cursor_size, y, x+cursor_size, y);
+//    ofLine(x, y-cursor_size, x, y+cursor_size);
+    ofFill();
+    ofRect(x-cursor_size/2+cursor_width/2, y, cursor_size, cursor_width);
+    ofRect(x, y-cursor_size/2+cursor_width/2, cursor_width, cursor_size);
 }
 
 void UdpReceiver::start(){

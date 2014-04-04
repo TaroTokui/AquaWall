@@ -16,6 +16,8 @@
 			<kurage_hp>1</kurage_hp>
 			<kurage_num>5</kurage_num>
 			<kurage_size>206</kurage_size>
+		<kurage_speed>5</kurage_speed>
+			<kurage_color>-1</kurage_color>
 		</Enemy_status>
 	</stage_1>
 	<stage_2>

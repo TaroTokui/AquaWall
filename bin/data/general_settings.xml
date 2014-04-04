@@ -10,6 +10,10 @@
 	</Arduino>
 	<Calibration>
 		<offset>0, 0</offset>
+	<window_size>1340.24, 776.377</window_size>
+		<cursor_size>63</cursor_size>
+		<cursor_width>7.5</cursor_width>
+		<show_cursor>1</show_cursor>
 	</Calibration>
 <general_settings/>
 <Hibana>

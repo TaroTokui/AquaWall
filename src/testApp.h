@@ -26,8 +26,6 @@
 #define IN_PORT_1 11999
 #define IN_PORT_2 11998
 
-//static const int NUM_WII = 2;
-
 class testApp : public ofBaseApp{
 
 	public:
@@ -52,8 +50,6 @@ class testApp : public ofBaseApp{
     bool inTheScreen(int x, int y);
     
     // 入力
-//    wiimoteManager wiiInput;
-//    ofVec2f wiiPos[NUM_WII];
     UdpReceiver cameraInput;
     ofPoint camPos[NUM_INPUT_CAMERAS];
     

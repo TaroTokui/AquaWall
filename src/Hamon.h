@@ -5,6 +5,8 @@
 //  Created by Taro Tokui on 2014/01/17.
 //
 //
+// gui で半径、色、スピードを変えられるようにする
+// 色が負の時はランダムな色になる
 
 #pragma once
 
@@ -31,6 +33,6 @@ private:
     ofPlanePrimitive plane;
     
     // GUI
-	ofParameter<int> size, max_hp, hibana_num, change_duration;
-    ofParameter<float> hamon_speed;
+	ofParameter<int> hamon_color;
+    ofParameter<float> hamon_alpha, hamon_speed;
 };

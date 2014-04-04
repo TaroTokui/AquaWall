@@ -17,4 +17,10 @@
 		<hibana_size>48</hibana_size>
 		<hibana_speed>32.1429</hibana_speed>
 	</Hibana>
+<Hamon>
+		<hamon_color>-1</hamon_color>
+		<hamon_size>10</hamon_size>
+		<hamon_speed>0.107143</hamon_speed>
+	<hamon_alpha>4</hamon_alpha>
+	</Hamon>
 </general_settings>

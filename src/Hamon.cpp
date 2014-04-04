@@ -16,6 +16,11 @@ Hamon::Hamon(){
     plane.set(mImage.getWidth(), mImage.getHeight(), 2, 2, OF_PRIMITIVE_TRIANGLES);
     // setup
     plane.mapTexCoordsFromTexture(mImage.getTextureReference());
+    
+    parameters.setName("Hamon");
+    parameters.add(hamon_color.set( "hamon color", -1, -1, 255 ));
+    parameters.add(hamon_alpha.set( "hamon alpha", 4, 0, 10 ));
+    parameters.add(hamon_speed.set( "hamon speed", 0.04, 0.0, 0.2 ));
 }
 
 Hamon::~Hamon(){
@@ -25,7 +30,7 @@ void Hamon::setup(int x, int y, int n){
     
     Ring newRing;
     for (int i=0; i<1; i++) {
-        newRing.setup(x, y, 0.04);
+        newRing.setup(x, y, hamon_speed, hamon_alpha, hamon_color);
         rings.push_back(newRing);
     }
     

@@ -18,15 +18,24 @@ void Ring::setup(int x, int y, float speed)
 
 void Ring::setup(int x, int y, float speed, float _alpha)
 {
+    setup(x, y, speed, _alpha, -1);
+}
+
+void Ring::setup(int x, int y, float speed, float _alpha, int hue)
+{
     mX = x;
     mY = y;
     mVX = speed;
     mVY = speed;
     mWidth = 10.0;
     mHeight = 10.0;
-    mC.setHsb(ofRandom(255), 255, 255);
+    if (hue<0) {
+        mC.setHsb(ofRandom(255), 255, 255);
+    }else{
+        mC.setHsb(hue, 255, 255);
+    }
+    alpha_speed = _alpha;
     alpha = 255;
-    mC.a = alpha;
     scale = 0.001;
     mSpeed = speed;
 }
@@ -36,13 +45,16 @@ void Ring::update()
     mWidth += mVX;
     mHeight += mVY;
     
-    alpha -= 4;
+    alpha -= alpha_speed;
+    cout << alpha << endl;
     mC.a = alpha;
-    if (alpha<0) {
+    
+    scale += mSpeed;
+    
+    if (alpha<0 || scale > ofGetWidth()) {
         bDead = true;
     }
     
-    scale += mSpeed;
 }
 
 void Ring::draw()

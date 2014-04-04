@@ -17,6 +17,7 @@ public:
     ~Ring();
     void setup(int x, int y, float speed);
     void setup(int x, int y, float speed, float _alpha);
+    void setup(int x, int y, float speed, float _alpha, int hue);
     void update();
     void draw();
     
@@ -32,6 +33,7 @@ private:
     bool bDead;
     ofColor mC;
     int alpha;
+    int alpha_speed;
     float scale;
     float mSpeed;
 };

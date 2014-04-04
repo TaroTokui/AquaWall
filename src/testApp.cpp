@@ -12,12 +12,6 @@ void testApp::setup(){
         camPos[i].y = 0;
     }
     
-//    wiiInput.start();
-//    for (int i=0; i<NUM_WII; i++) {
-//        wiiPos[i].x = 0;
-//        wiiPos[i].y = 0;
-//    }
-    
 #if ENABLE_ARDUINO
     ardOutput.setup();
 #endif
@@ -27,6 +21,7 @@ void testApp::setup(){
     general_params.add(target_window.set( "target window", ofVec4f(ofGetWidth()/4, ofGetHeight()/4, ofGetWidth()/2, ofGetHeight()/2), ofVec4f(0, 0, 0, 0), ofVec4f(ofGetWidth()/4, ofGetHeight()/2, 1920, 1080) ));
     
     general_params.add(hibana.parameters);
+    general_params.add(hamon.parameters);
     general_params.add(ardOutput.parameters);
     general_params.add(cameraInput.parameters);
     
@@ -57,32 +52,6 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
-//  wiiの場合をコメントアウト 2014/04/02
-//    // input
-//    for (int i=0; i<NUM_WII; i++) {
-//        wiiInput.getXY(wiiPos[i].x, wiiPos[i].y, i);
-//        
-//        wiiPos[i].y -= 0.2;
-//        
-//        string tmpMessage = wiiInput.getButton(i);
-//        
-//#if ENABLE_ARDUINO
-//        if(inTheScreen(wiiPos[i].x*ofGetWidth(), wiiPos[i].y*ofGetHeight()))
-//        {
-//            ardOutput.setState(true, i);
-////            cout << "ID: "<< i << " on " << wiiPos[i].x << " " << wiiPos[i].y << endl;
-//        }else{
-//            ardOutput.setState(false, i);
-//        }
-//        
-//        // arduinoでonかoffかを受け取る
-//        if (ardOutput.getState(i)) {
-//            collider(wiiPos[i].x*ofGetWidth(), wiiPos[i].y*ofGetHeight());
-//        }
-//#endif
-//    }
-//
     
     // input
     for (int i=0; i<NUM_INPUT_CAMERAS; i++) {

@@ -21,8 +21,6 @@
 #define SHOT_3 9
 #define AHIRU 8
 
-#define DEMO_MODE 1
-
 static const int NUM_CONTROLLER = 2;
 
 class ArduinoManager{
@@ -66,4 +64,5 @@ private:
 	ofParameter<int> shot_duration;
 	ofParameter<int> boss_duration;
 	ofParameter<int> ahiru_duration;
+	ofParameter<bool> safety_mode;
 };

@@ -15,6 +15,7 @@ ArduinoManager::ArduinoManager()
 	parameters.add(shot_duration.set("shot duration",150,0,1000));
 	parameters.add(boss_duration.set("boss duration",150,0,1000));
 	parameters.add(ahiru_duration.set("ahiru duration",10000,0,20000));
+	parameters.add(safety_mode.set("safety mode",true));
 }
 
 ArduinoManager::~ArduinoManager(){}
@@ -65,7 +66,7 @@ void ArduinoManager::update()
     // アヒル
     if (ahiru_flag)
     {
-        if( ofGetElapsedTimeMillis() - start_time_boss > ahiru_duration )
+        if( ofGetElapsedTimeMillis() - start_time_ahiru > ahiru_duration )
         {
             ard.sendDigital(AHIRU, ARD_LOW);
             ahiru_flag = false;
@@ -158,22 +159,22 @@ void ArduinoManager::digitalPinChanged(const int & pinNum){
     cout << "----------" << endl;
     cout << pinNum << ": " << ard.getDigital(pinNum) << endl;
     
-#if DEMO_MODE
-    for (int i=0; i<NUM_CONTROLLER; i++)
-    {
-        if ( pinNum == pin_in[i] && ard.getDigital(pin_in[i])) {
-            shot_start(i);
-            cout << i << endl;
+    if (safety_mode) {
+        for (int i=0; i<NUM_CONTROLLER; i++)
+        {
+            if (ard.getDigital(pin_in[i]) && enable[i] ) {
+                shot_start(i);
+            }
+        }
+    }else{
+        for (int i=0; i<NUM_CONTROLLER; i++)
+        {
+            if ( pinNum == pin_in[i] && ard.getDigital(pin_in[i])) {
+                shot_start(i);
+                cout << i << endl;
+            }
         }
     }
-#else
-    for (int i=0; i<NUM_CONTROLLER; i++)
-    {
-        if (ard.getDigital(pin_in[i]) && enable[i] ) {
-            shot_start(i);
-        }
-    }
-#endif
     
 //    if ( pinNum == GUN_INPUT_1 && ard.getDigital(GUN_INPUT_1) && enable[0]) {
 //        shot_start(0);

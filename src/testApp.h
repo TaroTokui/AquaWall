@@ -21,7 +21,7 @@
 #include "Calibration.h"
 #include "Config.h"
 
-#define ENABLE_ARDUINO 0
+#define ENABLE_ARDUINO 1
 #define SHOW_WIIMOTE 0
 
 #define IN_PORT_1 11999

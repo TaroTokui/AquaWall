@@ -86,7 +86,7 @@ void testApp::update(){
             ardOutput.ahiru_start();
 #endif
             game_start.startAhiru();
-            cout << "go! ahiru!!" << endl;
+            cout << "ahiru < help !!" << endl;
         }
         
         // 音声再生
@@ -124,7 +124,7 @@ void testApp::update(){
             ardOutput.ahiru_start();
 #endif
             gameover.startAhiru();
-            cout << "go! ahiru!!" << endl;
+            cout << "ahiru < thanks !!" << endl;
         }
         
         // 音声再生

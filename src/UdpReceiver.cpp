@@ -44,8 +44,6 @@ void UdpReceiver::drawCross(ofPoint pos){
     ofSetColor(255);
     ofSetLineWidth(cursor_width);
     
-    ofCircle(0, 0, 20);
-    
     int x = pos.x*ofGetWidth();
     int y = pos.y*ofGetHeight();
 //    ofLine(x-cursor_size, y, x+cursor_size, y);
@@ -74,6 +72,8 @@ void UdpReceiver::threadedFunction(){
             string message=udpMessage;
             
             if(message!=""){
+                cout << message << endl;
+                
                 float x,y;
                 vector<string> strPoints = ofSplitString(message,"[/p]");
                 for(unsigned int i=0;i<strPoints.size();i++){
@@ -81,7 +81,7 @@ void UdpReceiver::threadedFunction(){
                     if( point.size() == 3 ){
                         x=atof(point[0].c_str());
                         y=atof(point[1].c_str());
-                        cout << "ID:" << atoi(point[2].c_str()) << " x:" << x << " y:" << y << endl;
+//                        cout << "ID:" << atoi(point[2].c_str()) << " x:" << x << " y:" << y << endl;
                         mPos[atoi(point[2].c_str())].set(x, y);
                     }
                 }

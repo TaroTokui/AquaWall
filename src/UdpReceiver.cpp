@@ -20,19 +20,15 @@ UdpReceiver::UdpReceiver()
 	parameters.add(show_cursor.set("show cursor",true));
 }
 UdpReceiver::~UdpReceiver(){
-    udpConnection1.Close();
-    udpConnection2.Close();
+    udpConnection.Close();
 }
 
-void UdpReceiver::setup(int PORT1, int PORT2)
+void UdpReceiver::setup(int PORT1)
 {
-    udpConnection1.Create();
-    udpConnection1.Bind(PORT1);
-    udpConnection1.SetNonBlocking(true);
+    udpConnection.Create();
+    udpConnection.Bind(PORT1);
+    udpConnection.SetNonBlocking(true);
     
-    udpConnection2.Create();
-    udpConnection2.Bind(PORT2);
-    udpConnection2.SetNonBlocking(true);
 }
 
 void UdpReceiver::draw(){
@@ -73,63 +69,24 @@ void UdpReceiver::threadedFunction(){
     while( isThreadRunning() != 0 ){
         if( lock() ){
             
-            // 8byte受け取る, float をふたつ、4*2=8byte
-            // 受け取り用の構造体を作る
-            //
-            
-            char udpMessage[8];
-            udpConnection1.Receive(udpMessage,8);// ここに構造体のポインタを渡す
+            char udpMessage[100];
+            udpConnection.Receive(udpMessage,100);
             string message=udpMessage;
             
-//            camera_pos *tmpPos = static_cast<camera_pos>(message);
+            if(message!=""){
+                float x,y;
+                vector<string> strPoints = ofSplitString(message,"[/p]");
+                for(unsigned int i=0;i<strPoints.size();i++){
+                    vector<string> point = ofSplitString(strPoints[i],"|");
+                    if( point.size() == 3 ){
+                        x=atof(point[0].c_str());
+                        y=atof(point[1].c_str());
+                        cout << "ID:" << atoi(point[2].c_str()) << " x:" << x << " y:" << y << endl;
+                        mPos[atoi(point[2].c_str())].set(x, y);
+                    }
+                }
+            }
             
-            // 4バイトずつもらう
-            
-            // ofToBinaryでcharをbinaryにする
-            string bm[8];
-            bm[0] = ofToBinary(udpMessage[0]);
-            bm[1] = ofToBinary(udpMessage[1]);
-            bm[2] = ofToBinary(udpMessage[2]);
-            bm[3] = ofToBinary(udpMessage[3]);
-            bm[4] = ofToBinary(udpMessage[4]);
-            bm[5] = ofToBinary(udpMessage[5]);
-            bm[6] = ofToBinary(udpMessage[6]);
-            bm[7] = ofToBinary(udpMessage[7]);
-            // binaryになったcharを4byte分たす
-            // たされた結果をofBinaryToFloatでfloatに戻す
-            float x = ofBinaryToFloat(bm[0] + bm[1] + bm[2] + bm[3]);
-            float y = ofBinaryToFloat(bm[4] + bm[5] + bm[6] + bm[7]);
-            mPos[0].set(x, y);
-//            if(message!=""){
-//                float x,y;
-//                vector<string> strPoints = ofSplitString(message,"[/p]");
-//                for(unsigned int i=0;i<strPoints.size();i++){
-//                    vector<string> point = ofSplitString(strPoints[i],"|");
-//                    if( point.size() == 2 ){
-//                        x=atof(point[0].c_str());
-//                        y=atof(point[1].c_str());
-//                        mPos[0].set(x, y);
-//                    }
-//                }
-//            }
-            
-            // ２つ目のコントローラ
-            udpConnection2.Receive(udpMessage,8);// ここに構造体のポインタを渡す
-            
-            // ofToBinaryでcharをbinaryにする
-            bm[0] = ofToBinary(udpMessage[0]);
-            bm[1] = ofToBinary(udpMessage[1]);
-            bm[2] = ofToBinary(udpMessage[2]);
-            bm[3] = ofToBinary(udpMessage[3]);
-            bm[4] = ofToBinary(udpMessage[4]);
-            bm[5] = ofToBinary(udpMessage[5]);
-            bm[6] = ofToBinary(udpMessage[6]);
-            bm[7] = ofToBinary(udpMessage[7]);
-            // binaryになったcharを4byte分たす
-            // たされた結果をofBinaryToFloatでfloatに戻す
-            x = ofBinaryToFloat(bm[0] + bm[1] + bm[2] + bm[3]);
-            y = ofBinaryToFloat(bm[4] + bm[5] + bm[6] + bm[7]);
-            mPos[1].set(x, y);
             unlock();
             ofSleepMillis(1);
         }

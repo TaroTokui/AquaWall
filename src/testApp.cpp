@@ -5,7 +5,7 @@ void testApp::setup(){
     
     // カメラからUDPで座標を受け取る
     // 複数ポートでデータを受け取る
-    cameraInput.setup(IN_PORT_1, IN_PORT_2);
+    cameraInput.setup(IN_PORT_1);
     cameraInput.start();
     for (int i=0; i<NUM_INPUT_CAMERAS; i++) {
         camPos[i].x = 0;

@@ -24,7 +24,7 @@ public:
     UdpReceiver();
     ~UdpReceiver();
     
-    void setup(int PORT1, int PORT2);
+    void setup(int PORT1);
     void draw();    // デバッグ用
     
     void start();
@@ -41,7 +41,7 @@ public:
 private:
     void drawCross(ofPoint pos);
     
-    ofxUDPManager udpConnection1, udpConnection2;
+    ofxUDPManager udpConnection;
     
     ofPoint mPos[NUM_INPUT_CAMERAS];
     

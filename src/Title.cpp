@@ -10,7 +10,7 @@
 
 Title::Title():image_offset(0){
     titleImage.loadImage(TITLE_IMAGE_TEXT);
-    // ここであひる画像の読み込み
+    ahiruImage.loadImage(TITLE_IMAGE_DUCK);
 	parameters.setName("Title");
 	parameters.add(title_speed.set("title speed",0.0,0.0,20.0));
 	parameters.add(title_hue.set("title hue",0,0,255));
@@ -54,9 +54,12 @@ void Title::update()
 void Title::draw()
 {
     ofRectangle tmpRect = mRect;
-    ofSetColor(mColor);
+    
+    // アヒルの画像
+    ahiruImage.draw(tmpRect);
     
     // 一枚目の画像
+    ofSetColor(mColor);
     tmpRect.x += image_offset;
     titleImage.draw(tmpRect);
     tmpRect.x -= ofGetWidth();

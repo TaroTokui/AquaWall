@@ -24,7 +24,6 @@
 #define SHOW_WIIMOTE 0
 
 #define IN_PORT_1 11999
-#define IN_PORT_2 11998
 
 class testApp : public ofBaseApp{
 
@@ -59,9 +58,6 @@ class testApp : public ofBaseApp{
     // GUI
 	ofxPanel gui_general, gui_stage;
 	ofParameter<ofVec4f> target_window;
-	ofParameter<int> hibana_num;
-	ofParameter<int> hibana_size;
-	ofParameter<float> hibana_speed;
     
     ofParameterGroup general_params, stage_params;
     

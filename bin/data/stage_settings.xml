@@ -22,15 +22,25 @@
 	</stage_1>
 	<stage_2>
 		<Boss_status>
-			<size>200</size>
-			<hp>3</hp>
-			<grow_speed>0.364848</grow_speed>
-			<change_duration>500</change_duration>
+			<size>409</size>
+			<hp>1</hp>
+			<grow_speed>0.010454</grow_speed>
+			<change_duration>5</change_duration>
 			<hibana_num>5</hibana_num>
+		<dying_duration>5</dying_duration>
 		</Boss_status>
 	</stage_2>
 	<GameOver>
 		<gameover_duration>10</gameover_duration>
+	<blank_duration>5</blank_duration>
+		<ahiru_in_duration>1</ahiru_in_duration>
+		<merci_duration>4</merci_duration>
+		<text_hue>214</text_hue>
 	</GameOver>
 <stage_settings/>
+<Config>
+		<config_speed>0</config_speed>
+		<config_hue>0</config_hue>
+		<config_sat>255</config_sat>
+	</Config>
 </stage_settings>

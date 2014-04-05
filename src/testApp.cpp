@@ -18,7 +18,7 @@ void testApp::setup(){
     
     // gui
 	general_params.setName("general settings");
-    general_params.add(target_window.set( "target window", ofVec4f(ofGetWidth()/4, ofGetHeight()/4, ofGetWidth()/2, ofGetHeight()/2), ofVec4f(0, 0, 0, 0), ofVec4f(ofGetWidth()/4, ofGetHeight()/2, 1920, 1080) ));
+    general_params.add(target_window.set( "target window", ofVec4f(ofGetWidth()/4, ofGetHeight()/4, ofGetWidth()/2, ofGetHeight()/2), ofVec4f(0, 0, 0, 0), ofVec4f(ofGetWidth()/2, ofGetHeight()/2, 1920, 1080) ));
     
     general_params.add(hibana.parameters);
     general_params.add(hamon.parameters);
@@ -35,6 +35,7 @@ void testApp::setup(){
     stage_params.add(stage1.parameters);
     stage_params.add(stage2.parameters);
     stage_params.add(gameover.parameters);
+    stage_params.add(game_config.parameters);
     
     gui_stage.setup(stage_params);
     gui_stage.loadFromFile("stage_settings.xml");
@@ -100,7 +101,38 @@ void testApp::update(){
     if (scene == STAGE2) {
         if (stage2.isExplode())
         {
-            hibana.add(target_window->x + target_window->z/2, target_window->y + target_window->w/2, stage2.getHibanaAmount());
+            hibana.add(target_window->x + ofRandom(target_window->z/2) + target_window->z/4, target_window->y + ofRandom(target_window->w/2) + target_window->w/4, stage2.getHibanaAmount());
+            
+            if(sounds.isStop(0)){
+                sounds.play(0);
+            }
+            // 爆発中 && まだ吹き出していない
+            if (stage2.isSplash()) {
+#if ENABLE_ARDUINO
+                ardOutput.boss_start();
+#endif
+                stage2.stopSplash();
+                cout << "splash" << endl;
+            }
+        }
+    }
+    
+    if (scene == GAMEOVER) {
+        if (gameover.enableAhiru())
+        {
+#if ENABLE_ARDUINO
+            ardOutput.ahiru_start();
+#endif
+            gameover.startAhiru();
+            cout << "go! ahiru!!" << endl;
+        }
+        
+        // 音声再生
+        if (gameover.enableThanks())
+        {
+            sounds.play(3); // ありがとー
+            gameover.startThanks();
+            cout << "help !!" << endl;
         }
     }
     
@@ -126,6 +158,15 @@ void testApp::draw(){
     hibana.draw();
     hamon.draw();
     cameraInput.draw();
+    
+    if (scene==CONFIG) {
+        // 2014/04/05
+        // 面倒になったので保留、でも見ながら調整したいなー
+        // ウィルスの大きさと色
+        // ボスの大きさと色
+        // 火花
+    }
+    
 	if( bShowGui )
     {
         ofNoFill();
@@ -243,6 +284,7 @@ void testApp::toggleScene(bool bIncrement){
     // シーンの変更
     switch (scene) {
         case CONFIG:
+            current_scene = &game_config;
             break;
             
         case CALIBRATION:

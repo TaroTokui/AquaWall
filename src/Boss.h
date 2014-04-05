@@ -5,6 +5,12 @@
 //  Created by Taro Tokui on 2014/01/18.
 //
 //
+// 赤色
+// 中央付近をウロウロ動く：後回し、trigonoなんとかのサンプルで動きつくろうかな
+// 空気砲が当たると色が黄色くなって大きさが振動する(5秒)
+// その後、突然大きくなって爆発して消える
+// このとき、電磁バルブをONにする
+
 
 #pragma once
 
@@ -49,6 +55,6 @@ private:
     unsigned long long start_time;
     
     // gui
-	ofParameter<int> size, max_hp, hibana_num, change_duration;
+	ofParameter<int> size, max_hp, hibana_num, change_duration, dying;
     ofParameter<float> grow_speed;
 };

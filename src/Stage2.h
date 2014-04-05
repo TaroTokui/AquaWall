@@ -22,6 +22,8 @@ public:
     bool collider(int x, int y);
     bool isEnd();
     bool isExplode();
+    bool isSplash();
+    void stopSplash();
     
     int getHibanaAmount();
     
@@ -29,5 +31,5 @@ public:
 private:
     Boss boss;
     bool bEnd;
-    bool bExplode;
+    bool bExplode, bSplash;
 };

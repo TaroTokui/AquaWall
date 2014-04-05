@@ -19,6 +19,7 @@
 #include "Start.h"
 #include "GameOver.h"
 #include "Calibration.h"
+#include "Config.h"
 
 #define ENABLE_ARDUINO 0
 #define SHOW_WIIMOTE 0
@@ -72,6 +73,7 @@ class testApp : public ofBaseApp{
     CStart game_start;
     GameOver gameover;
     Calibration calibration;
+    CConfig game_config;
     
     // エフェクト
     Hibana hibana;

@@ -21,7 +21,7 @@ public:
     
     void play(int index);
     void stop();
-    void isStop();
+    bool isStop(int index);
     
     void add(string path, int index);
     

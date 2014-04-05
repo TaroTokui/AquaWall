@@ -22,6 +22,7 @@ void Stage2::init(ofVec4f targetRect)
     boss.setup(targetRect.x+targetRect.z/2, targetRect.y+targetRect.w/2);
     bEnd = false;
     bExplode = false;
+    bSplash = true;
 }
 
 void Stage2::update()
@@ -63,6 +64,16 @@ bool Stage2::isEnd()
 bool Stage2::isExplode()
 {
     return bExplode;
+}
+
+bool Stage2::isSplash()
+{
+    return bSplash;
+}
+
+void Stage2::stopSplash()
+{
+    bSplash = false;
 }
 
 int Stage2::getHibanaAmount(){

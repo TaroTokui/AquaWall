@@ -15,10 +15,11 @@ SoundManager::~SoundManager(){}
 void SoundManager::setup(){
 	sounds[0].loadSound("sounds/collision.mp3");
 	sounds[1].loadSound("sounds/shot.mp3");
-	sounds[2].loadSound("sounds/help.mp3");
-	sounds[3].loadSound("sounds/thanks.mp3");
+	sounds[2].loadSound("sounds/help.wav");
+	sounds[3].loadSound("sounds/thanks.wav");
     
-    // 効果音は有限個しか読み込まないのでvector型では管理しない。2014/04/05
+    // 2014/04/05
+    // 効果音は有限個しか読み込まないのでvector型では管理しない。
     // vectorに突っ込むと全部最後の音になってしまうので、結局ただの配列にした
 //    ofSoundPlayer tmpSound;
 //    tmpSound.loadSound("sounds/collision.mp3");
@@ -33,7 +34,8 @@ void SoundManager::update(){
 	ofSoundUpdate();
 }
 
-void SoundManager::play(int index){
+void SoundManager::play(int index)
+{
     if (index<NUM_SOUNDS)
     {
         sounds[index].play();
@@ -48,7 +50,15 @@ void SoundManager::play(int index){
 
 void SoundManager::stop(){}
 
-void SoundManager::isStop(){}
+bool SoundManager::isStop(int index)
+{
+    if (index<NUM_SOUNDS)
+    {
+        return !(sounds[index].getIsPlaying());
+    }else{
+        return false;
+    }
+}
 
 void SoundManager::add(string path, int index){
     ofSoundPlayer tmpSound;
